@@ -131,7 +131,8 @@
   </script>
   <script>
   var database = firebase.database().ref().child('algs-ohf2l');
-  database.once('value', function(snapshot){
+  console.log(database)
+  database.once('value').then(function(snapshot){
       if(snapshot.exists()){
           var content = '';
 
@@ -143,6 +144,9 @@
               content += '<h6 class="center">' + alg + '</h6>'; //algorithm
               content += '</div>';
           });
+          console.log("zaczynamy");
+          console.log(content);
+          console.log("konczymy");
           $('#algorithms').append(content);
       }
   });
