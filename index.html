@@ -138,10 +138,13 @@
               var data = doc.data()
               var alg = data.alg;
               var image = data.image;
+              content += '<div class="col s12 m4">';
               content += '<div class="center icon-block">';
               content += '<img src="' + image + '" alt="" class="center-responsive-img">';//image
               content += '<h6 class="center">' + alg + '</h6>'; //algorithm
               content += '</div>';
+              content += '</div>';
+              
           });
           console.log("zaczynamy");
           console.log(content);
