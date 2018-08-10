@@ -131,7 +131,6 @@
   </script>
   <script>
   var database = firebase.database().ref().child('algs-ohf2l');
-  console.log(database)
   database.once('value').then(function(snapshot){
       if(snapshot.exists()){
           var content = '';
