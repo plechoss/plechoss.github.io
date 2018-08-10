@@ -39,10 +39,22 @@
     </div>
   </div>
 
+  <script>
+    // Initialize Firebase
+    var config = {
+      apiKey: "AIzaSyDs3rD_LiJJ4ywlIkT2GtyE7M6xn2Alc1s",
+      authDomain: "alg-website-252f3.firebaseapp.com",
+      databaseURL: "https://alg-website-252f3.firebaseio.com",
+      projectId: "alg-website-252f3",
+      storageBucket: "",
+      messagingSenderId: "484239364413"
+    };
+    firebase.initializeApp(config);
+  </script>
 
   <div class="container">
-      <div class="row">
-        <div class="col s12 m4">
+      <div class="row" id="algorithms">
+        <!-- <div class="col s12 m4">
           <div class="center icon-block">
             <img src="http://cube.crider.co.uk/visualcube.php?fmt=svg&size=200&case=Rr%27UrU%27r%27U%27rR%27" alt="" class="center-responsive-img">
             <h6 class="center">R r' U r U' r' U' r R'</h6>
@@ -103,7 +115,25 @@
               <img src="http://cube.crider.co.uk/visualcube.php?fmt=svg&size=200&case=rR%27URU%27r%27RU%27R%27URU%27R%27" alt="" class="center-responsive-img">
               <h6 class="center">r R' U R U' R U' R' U R U' R'</h6>
             </div>
-        </div>
+        </div>-->
+        <script>
+        var database = firebase.database().ref().child('algs-ohf2l');
+        database.once('value', function(snapshot){
+            if(snapshot.exists()){
+                var content = '';
+
+                snapshot.forEach(function(data){
+                    var alg = data.val().alg;
+                    var image = data.val().image;
+                    content += '<div class="center icon-block">';
+                    content += '<img src="' + image + '" alt="" class="center-responsive-img">';//image
+                    content += '<h6 class="center">' + alg + '</h6>'; //algorithm
+                    content += '</div>';
+                });
+                $('#algorithms').append(content);
+            }
+        });
+        </script>
     </div>
     <br><br>
 </div>
@@ -117,18 +147,6 @@
 
   <!--  Scripts-->
   <script src="https://www.gstatic.com/firebasejs/5.3.1/firebase.js"></script>
-  <script>
-    // Initialize Firebase
-    var config = {
-      apiKey: "AIzaSyDs3rD_LiJJ4ywlIkT2GtyE7M6xn2Alc1s",
-      authDomain: "alg-website-252f3.firebaseapp.com",
-      databaseURL: "https://alg-website-252f3.firebaseio.com",
-      projectId: "alg-website-252f3",
-      storageBucket: "",
-      messagingSenderId: "484239364413"
-    };
-    firebase.initializeApp(config);
-  </script>
   <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
   <script src="js/materialize.js"></script>
   <script src="js/init.js"></script>
