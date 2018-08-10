@@ -124,20 +124,20 @@
       authDomain: "alg-website-252f3.firebaseapp.com",
       databaseURL: "https://alg-website-252f3.firebaseio.com",
       projectId: "alg-website-252f3",
-      storageBucket: "",
+      storageBucket: "alg-website-252f3.appspot.com",
       messagingSenderId: "484239364413"
     };
     firebase.initializeApp(config);
   </script>
   <script>
-  var database = firebase.database().ref().child('algs-ohf2l');
-  database.once('value').then(function(snapshot){
-      if(snapshot.exists()){
+  var database = firebase.firestore();
+  database.collection("algs-ohf2l").get().then(function(snapshot){
           var content = '';
 
-          snapshot.forEach(function(data){
-              var alg = data.val().alg;
-              var image = data.val().image;
+          snapshot.forEach(function(doc){
+              var data = doc.data()
+              var alg = data.alg;
+              var image = data.image;
               content += '<div class="center icon-block">';
               content += '<img src="' + image + '" alt="" class="center-responsive-img">';//image
               content += '<h6 class="center">' + alg + '</h6>'; //algorithm
@@ -147,7 +147,6 @@
           console.log(content);
           console.log("konczymy");
           $('#algorithms').append(content);
-      }
   });
   </script>
   <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
