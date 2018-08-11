@@ -23,23 +23,23 @@
         <li><a href="/algPublisher" class="white-text" style="vertical-align: middle;">Alg publisher</a></li>
       </ul>
       <ul class="right hide-on-med-and-down">
-        <li><a href="#" class="white-text" style="vertical-align: middle;">1LLL</a></li>
+        <li><a href="#" class="white-text" style="vertical-align: middle;" onclick="show('algs-1lll');return false;">1LLL</a></li>
       </ul>
       <ul class="right hide-on-med-and-down">
-        <li><a href="#" class="white-text" style="vertical-align: middle;">ZBLL</a></li>
+        <li><a href="#" class="white-text" style="vertical-align: middle;" onclick="show('algs-zbll');return false;">ZBLL</a></li>
       </ul>
       <ul class="right hide-on-med-and-down">
-        <li><a href="#" class="white-text" style="vertical-align: middle;">Multislotting</a></li>
+        <li><a href="#" class="white-text" style="vertical-align: middle;" onclick="show('algs-multislotting');return false;">Multislotting</a></li>
       </ul>
       <ul class="right hide-on-med-and-down">
-        <li><a href="#" class="white-text" style="vertical-align: middle;">OH F2L</a></li>
+        <li><a href="#" class="white-text" style="vertical-align: middle;" onclick="show('algs-ohf2l');return false;">OH F2L</a></li>
       </ul>
 
       <ul id="nav-mobile" class="sidenav blue-grey darken-1">
-      <li><a href="#" class="white-text" style="vertical-align: middle;">OH F2L</a></li>
-        <li><a href="#" class="white-text" style="vertical-align: middle;">Multislotting</a></li>
-        <li><a href="#" class="white-text" style="vertical-align: middle;">ZBLL</a></li>
-        <li><a href="#" class="white-text" style="vertical-align: middle;">1LLL</a></li>
+      <li><a href="#" class="white-text" style="vertical-align: middle;" onclick="show('algs-ohf2l');return false;">OH F2L</a></li>
+        <li><a href="#" class="white-text" style="vertical-align: middle;" onclick="show('algs-multislotting');return false;">Multislotting</a></li>
+        <li><a href="#" class="white-text" style="vertical-align: middle;" onclick="show('algs-zbll');return false;">ZBLL</a></li>
+        <li><a href="#" class="white-text" style="vertical-align: middle;" onclick="show('algs-1lll');return false;">1LLL</a></li>
         <li><a href="/algPublisher" class="white-text" style="vertical-align: middle;">Alg publisher</a></li>
         <br><br>
         <li><a href="https://www.youtube.com/user/plechoss" class="white-text" style="vertical-align: middle;">YouTube</a></li>
@@ -48,22 +48,71 @@
       <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
     </div>
   </nav>
-  <div class="section no-pad-bot" id="index-banner">
-    <div class="container">
-      <h1 class="header center blue-grey-text text-darken-4">OH F2L</h1>
-      <div class="row center">
-        <h5 class="header col s12 light">F2L algorithms optimized for one-handed, mainly in &ltR,r,U&gt</h5>
-      </div>
-      <br><br>
-    </div>
-  </div>
-
 
   <div class="container">
-    <div class="row" id="algorithms">
+    <div class="row" id="algs-ohf2l" style="display:none">
+    <div class="section no-pad-bot" id="index-banner">
+      <div class="container">
+        <h1 class="header center blue-grey-text text-darken-4">OH F2L</h1>
+        <div class="row center">
+          <h5 class="header col s12 light">F2L algorithms optimized for one-handed, mainly in &ltR,r,U&gt</h5>
+        </div>
+        <br><br>
+      </div>
+    </div>
+    <div class="row" id="algs-ohf2l-small">
     </div>
     <br><br>
-</div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row" id="algs-multislotting" style="display:none">
+    <div class="section no-pad-bot" id="index-banner">
+      <div class="container">
+        <h1 class="header center blue-grey-text text-darken-4">Multislotting</h1>
+        <div class="row center">
+          <h5 class="header col s12 light">Algorithms that solve two F2L pairs at the same time</h5>
+        </div>
+        <br><br>
+      </div>
+    </div>
+    <div class="row" id="algs-multislotting-small">
+    </div>
+    <br><br>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row" id="algs-zbll" style="display:none">
+    <div class="section no-pad-bot" id="index-banner">
+      <div class="container">
+        <h1 class="header center blue-grey-text text-darken-4">ZBLL</h1>
+        <div class="row center">
+          <h5 class="header col s12 light">Algorithms solving corners and edge permutation of last layer</h5>
+        </div>
+        <br><br>
+      </div>
+    </div>
+    <div class="row" id="algs-zbll-small">
+    </div>
+    <br><br>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row" id="algs-1lll" style="display:none">
+    <div class="section no-pad-bot" id="index-banner">
+      <div class="container">
+        <h1 class="header center blue-grey-text text-darken-4">1LLLL</h1>
+        <div class="row center">
+          <h5 class="header col s12 light">Algorithms that solve the whole last layer</h5>
+        </div>
+        <br><br>
+      </div>
+    </div>
+    <div class="row" id="algs-1lll-small">
+    </div>
+    <br><br>
+    </div>
+  </div>
 
 <!--  <footer class="page-footer blue-grey lighten-4">
       <div class="container">
@@ -87,10 +136,10 @@
     firebase.initializeApp(config);
   </script>
   <script>
+  function fill(algGroup) {
   var database = firebase.firestore();
-  database.collection("algs-ohf2l").get().then(function(snapshot){
+  database.collection(algGroup).get().then(function(snapshot){
           var content = '';
-
           snapshot.forEach(function(doc){
               var data = doc.data()
               var alg = data.alg;
@@ -103,8 +152,25 @@
               content += '</div>';
 
           });
-          $('#algorithms').append(content);
-  });
+          $('#' + algGroup  + '-small').html(content);
+      });
+  }
+  </script>
+  <script>
+  function show(divName) {
+      var x = document.getElementById(divName);
+      var ohf2l = document.getElementById("algs-ohf2l");
+      var multislotting = document.getElementById("algs-multislotting");
+      var zbll = document.getElementById("algs-zbll");
+      var onelooklastlayer = document.getElementById("algs-1lll");
+
+      fill(divName);
+      ohf2l.style.display = "none";
+      multislotting.style.display = "none";
+      zbll.style.display = "none";
+      onelooklastlayer.style.display = "none";
+      x.style.display = "block";
+    }
   </script>
   <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
   <script src="js/materialize.min.js"></script>
